@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İletişim</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/contactForm.css">
+    <link rel="stylesheet" href="/css/footer.css">
+</head>
+<body>
+    <%- include('../partials/header', { title: 'İletişim'}) %>
+
+    <section class="contact">
+        <div class="container">
+            <h1>Bizimle İletişime Geçin</h1>
+            <p>Hukuki sorunlarınıza eksiksiz çözümler için deneyimli ekibimize danışın.</p>
+            <%- include('../partials/contactForm') %>
+        </div>
+    </section>
+
+    <%- include('../partials/footer') %>
+</body>
+</html>

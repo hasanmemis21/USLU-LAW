@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uslu Hukuk Bürosu</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/custom.css">
+    <link rel="stylesheet" href="/css/features.css">
+    <link rel="stylesheet" href="/css/contactForm.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <!-- Yeni CSS dosyası burada -->
+</head>
+<body>
+    <%- include('../partials/header', { title: 'Anasayfa' }) %>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>DOĞRU HEDEF ETKİN ÇÖZÜM</h1>
+            <p>Kuvvetsiz Adalet Aciz, Adaletsiz Kuvvet de Zalimsidir. Adalete Hoşgeldiniz!</p>
+            <a href="/contact" class="btn-primary">İLETİŞİME GEÇ</a>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="feature-card feature-1">
+            <i class="fa fa-lock"></i>
+            <h3>Gizlilik & Mesleki Sır</h3>
+            <p>"Sır saklama ve gizlilik" avukatlık mesleğinin en önemli etik ilkelerinden biridir. Hukuk büromuz, BM Havana Avukatlık Kuralları, AB Avukatlık Meslek Kuralları ve 1136 Sayılı Avukatlık Kanunu ile belirlenen gizlilik ve sır saklama ilkesini hassasiyetle uygulamaktadır.</p>
+        </div>
+        <div class="feature-card feature-2">
+            <i class="fa fa-balance-scale"></i>
+            <h3>Bağımsızlık</h3>
+            <p>Hak arama özgürlüğünün güvencesi olan avukatlık mesleğinin icrasında "bağımsızlık" etkin bir savunma için zorunludur. Avukat, mesleğini ifa ederken tüm kişi ve özellikle kamu kurumlarına karşı bağımsız hareket etmelidir.</p>
+        </div>
+        <div class="feature-card feature-3">
+            <i class="fa fa-pencil-alt"></i>
+            <h3>Şeffaflık</h3>
+            <p>Avukat, mesleki faaliyetini icra ederken yapılan işin veya davanın aşamaları ve olası sonuçları hakkındaki hukuki görüşünü müvekkiline aktarmalıdır.</p>
+        </div>
+    </section>
+    <%- include('../partials/services') %>
+    
+
+    
+
+    <section class="contact">
+        <h2>Bizimle İletişime Geçin</h2>
+        <%- include('../partials/contactForm') %>
+    </section>
+    <%- include('../partials/footer') %>
+
+</body>
+</html>

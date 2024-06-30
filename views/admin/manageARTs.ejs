@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage ARTs</title>
+    <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+    <h1>Manage ARTs</h1>
+
+    <h2>Add New ART</h2>
+    <form action="/admin/addART" method="POST">
+        <div>
+            <label for="question">Tİtle</label>
+            <input type="text" id="question" name="question" required>
+        </div>
+        <div>
+            <label for="answer">Content</label>
+            <textarea id="answer" name="answer" required></textarea>
+        </div>
+        <button type="submit">Add ART</button>
+    </form>
+
+    <h2>Existing ARTs</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Content</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% arts.forEach(art => { %>
+                <tr>
+                    <td><%= art.title %></td>
+                    <td><%= art.content %></td>
+                    <td>
+                        <a href="/admin/editART/<%= art._id %>">Edit</a>
+                        <form action="/admin/deleteART/<%= art._id %>" method="POST" style="display:inline;">
+                            <button type="submit">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</body>
+</html>

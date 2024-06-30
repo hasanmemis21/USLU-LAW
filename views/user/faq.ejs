@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sıkça Sorulan Sorular</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/faq.css">
+    <link rel="stylesheet" href="/css/contactForm.css">
+    <link rel="stylesheet" href="/css/footer.css">
+</head>
+<body>
+    <%- include('../partials/header', { title: 'Sıkça sorulan sorular', additionalCss: 'faq.css' }) %>
+
+    <section class="faq">
+        <div class="container">
+            <h1>Sıkça Sorulan Sorular</h1>
+            <% faqs.forEach(faq => { %>
+                <div class="faq-item">
+                    <h2><%= faq.question %></h2>
+                    <p><%= faq.answer %></p>
+                </div>
+            <% }) %>
+        </div>
+    </section>
+
+    <%- include('../partials/footer') %>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Makaleler</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/admin.css">
+    <style>
+        .faq-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f7f7f7;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .faq-container h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .faq-container a {
+            display: inline-block;
+            margin-bottom: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+
+        .faq-container a:hover {
+            background-color: #0056b3;
+        }
+
+        .faq-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .faq-table th, .faq-table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        .faq-table th {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        .faq-table td a, .faq-table td form button {
+            display: inline-block;
+            width: 70px;
+            padding: 5px;
+            text-align: center;
+            text-decoration: none;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .faq-table td a {
+            background-color: #28a745;
+            color: #fff;
+        }
+
+        .faq-table td a:hover {
+            background-color: #218838;
+        }
+
+        .faq-table td form button {
+            background-color: #dc3545;
+            color: #fff;
+        }
+
+        .faq-table td form button:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+    <%- include('../layouts/adminLayout') %>
+
+    <div class="faq-container">
+        <h1>Makaleler</h1>
+        <a href="/admin/art/add">Yeni Makale Ekle</a>
+        <table class="faq-table">
+            <thead>
+                <tr>
+                    <th>Başlık</th>
+                    <th>İçerik</th>
+                    <th>İşlemler</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% arts.forEach(art => { %>
+                    <tr>
+                        <td><%= art.title %></td>
+                        <td><%- art.content %></td> <!-- HTML içeriğini güvenli bir şekilde render eder -->
+                        <td>
+                            <a href="/admin/art/edit/<%= art._id %>">Düzenle</a>
+                            <form action="/admin/art/delete/<%= art._id %>" method="POST" style="display: inline;">
+                                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                <button type="submit" onclick="return confirm('Bu makaleyi silmek istediğinizden emin misiniz?');">Sil</button>
+                            </form>
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

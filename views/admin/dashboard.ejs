@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/admin/dashboard">Dashboard</a></li>
+                <li><a href="/auth/logout">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        <h1>Admin Dashboard</h1>
+        <p>Welcome, <%= user.name %></p>
+
+        <h2>Users</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Online</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% users.forEach(user => { %>
+                    <tr>
+                        <td><%= user.name %></td>
+                        <td><%= user.email %></td>
+                        <td><%= user.role %></td>
+                        <td><%= user.online ? 'Yes' : 'No' %></td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+
+        <h2>Contents</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Metric</th>
+                    <th>Count</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Total Visits</td>
+                    <td><%= totalVisits %></td>
+                </tr>
+                <tr>
+                    <td>Daily Visits</td>
+                    <td><%= dailyVisits %></td>
+                </tr>
+                <tr>
+                    <td>Weekly Visits</td>
+                    <td><%= weeklyVisits %></td>
+                </tr>
+                <tr>
+                    <td>Monthly Visits</td>
+                    <td><%= monthlyVisits %></td>
+                </tr>
+                <tr>
+                    <td>Yearly Visits</td>
+                    <td><%= yearlyVisits %></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Online Users</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Type</th>
+                    <th>Count</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Current Online Users</td>
+                    <td><%= onlineUsers %></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>İçerik Yönetimi</h2>
+        <div class="content-management">
+            <ul>
+                <li><a href="/admin/faq">Sıkça Sorulan Sorular</a></li>
+                <li><a href="/admin/art">Makaleler</a></li>
+                <!-- Diğer yönetim bağlantıları ekleyin -->
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

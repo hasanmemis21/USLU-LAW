@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage FAQs</title>
+    <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+    <h1>Manage FAQs</h1>
+
+    <h2>Add New FAQ</h2>
+    <form action="/admin/addFAQ" method="POST">
+        <div>
+            <label for="question">Question</label>
+            <input type="text" id="question" name="question" required>
+        </div>
+        <div>
+            <label for="answer">Answer</label>
+            <textarea id="answer" name="answer" required></textarea>
+        </div>
+        <button type="submit">Add FAQ</button>
+    </form>
+
+    <h2>Existing FAQs</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Question</th>
+                <th>Answer</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% faqs.forEach(faq => { %>
+                <tr>
+                    <td><%= faq.question %></td>
+                    <td><%= faq.answer %></td>
+                    <td>
+                        <a href="/admin/editFAQ/<%= faq._id %>">Edit</a>
+                        <form action="/admin/deleteFAQ/<%= faq._id %>" method="POST" style="display:inline;">
+                            <button type="submit">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</body>
+</html>

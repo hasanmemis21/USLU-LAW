@@ -1,0 +1,46 @@
+<form id="contact-form" action="https://api.web3forms.com/submit" method="post" class="contact-form">
+    <input type="hidden" name="access_key" value="fc98d640-659f-45ad-8dc6-80605b23d22a">
+    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+    <input type="hidden" name="redirect" value="">
+    <div class="form-group">
+        <label for="name">İsim Soyisim *</label>
+        <input type="text" id="name" name="name" required>
+    </div>
+    <div class="form-group">
+        <label for="email">E-Posta *</label>
+        <input type="email" id="email" name="email" required>
+    </div>
+    <div class="form-group">
+        <label for="subject">Konu *</label>
+        <input type="text" id="subject" name="subject" required>
+    </div>
+    <div class="form-group">
+        <label for="message">Mesaj *</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+    </div>
+    <button type="submit">Gönder</button>
+</form>
+
+<script>
+document.getElementById('contact-form').addEventListener('submit', function(event) {
+    event.preventDefault(); // Formun varsayılan davranışını engelle
+    const form = event.target;
+
+    fetch(form.action, {
+        method: form.method,
+        body: new FormData(form),
+        headers: {
+            'Accept': 'application/json'
+        }
+    }).then(response => response.json()).then(data => {
+        if (data.success) {
+            alert('Mailiniz gönderildi!');
+            form.reset(); // Formu temizle
+        } else {
+            alert('Bir hata oluştu: ' + data.message);
+        }
+    }).catch(error => {
+        alert('Bir hata oluştu: ' + error.message);
+    });
+});
+</script>

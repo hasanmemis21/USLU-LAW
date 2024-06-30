@@ -1,0 +1,12 @@
+<%- include('../layouts/adminLayout') %>
+
+<h1>Manage Users</h1>
+<ul>
+    <% users.forEach(user => { %>
+        <li><%= user.name %> - <%= user.email %>
+            <form action="/admin/deleteUser/<%= user._id %>" method="POST" style="display:inline;">
+                <button type="submit">Delete</button>
+            </form>
+        </li>
+    <% }) %>
+</ul>
